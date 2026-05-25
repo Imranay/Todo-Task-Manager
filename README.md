@@ -1,4 +1,4 @@
-﻿# Task Master - Flask CRUD To-Do App
+# Task Master - Flask CRUD To-Do App
 
 Task Master is a simple Flask web application that allows users to create, view, update, and delete tasks.  
 It is built as a beginner-friendly CRUD project using Flask, Flask-SQLAlchemy, SQLite, HTML, CSS, and Jinja2 templates.
@@ -33,26 +33,6 @@ It is built as a beginner-friendly CRUD project using Flask, Flask-SQLAlchemy, S
 
 ---
 
-## Project Structure
-
-```text
-flask-introduction/
-│
-├── app.py
-├── tasks.db
-├── requirements.txt
-├── Procfile
-│
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   └── update.html
-│
-└── static/
-    └── css/
-        └── main.css
-```
-
 ---
 
 ## Installation and Setup
@@ -60,8 +40,8 @@ flask-introduction/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
+git clone https://github.com/Imranay/Todo-Task-Manager
+cd Todo-Task-Manager
 ```
 
 ### 2. Create a Virtual Environment
@@ -98,19 +78,13 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-If `requirements.txt` is not created yet, install packages manually:
+Or install packages manually:
 
 ```bash
 pip install flask flask-sqlalchemy gunicorn
 ```
 
-Then create `requirements.txt`:
-
-```bash
-pip freeze > requirements.txt
-```
-
----
+'''
 
 ## Database Setup
 
@@ -181,64 +155,6 @@ http://localhost:5000/
 
 ---
 
-## Important Code Explanation
-
-### Flask App Creation
-
-```python
-app = Flask(__name__)
-```
-
-This creates the Flask application object.
-
-### Database Configuration
-
-```python
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tasks.db"
-```
-
-This tells Flask-SQLAlchemy to use a SQLite database named `tasks.db`. /// tells the pyhton that it's a relative path
-
-### Task Model
-
-```python
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
-```
-
-This creates a database table for storing tasks.
-
-### Add Task
-
-```python
-new_task = Todo(content=task_content)
-db.session.add(new_task)
-db.session.commit()
-```
-
-This creates and saves a new task.
-
-### Delete Task
-
-```python
-task_to_delete = Todo.query.get_or_404(id)
-db.session.delete(task_to_delete)
-db.session.commit()
-```
-
-This finds a task by ID and deletes it.
-
-### Update Task
-
-```python
-task.content = request.form["content"]
-db.session.commit()
-```
-
-This changes the task content and saves the update.
-
 ---
 
 ## Heroku Deployment
@@ -274,7 +190,7 @@ heroku login
 ### 5. Create Heroku App
 
 ```bash
-heroku create your-app-name
+heroku create your-app-name (all small letters)
 ```
 
 ### 6. Push to Heroku
@@ -289,41 +205,7 @@ If your branch is named `master`, use:
 git push heroku master
 ```
 
-
-## Common Errors and Fixes
-
-### Error: `request is not defined`
-
-Cause: `request` was used but not imported.
-
-Fix:
-
-```python
-from flask import request
-```
-
-### Error: `No module named flask`
-
-Cause: Flask is not installed or virtual environment is not activated.
-
-Fix:
-
-```bash
-pip install flask
-```
-
-### Error: Heroku Application Error
-
-Possible cause: Missing `Procfile`.
-
-Fix:
-
-```text
-web: gunicorn app:app
-```
-
----
-
+'''
 ## Author
 
 Created as a beginner Flask CRUD project for learning web development with Python.
